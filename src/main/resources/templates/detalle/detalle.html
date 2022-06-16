@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+    <head th:replace="layout/layout :: head">
+        <title>Producto</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.1/css/bootstrap.min.css} "/>
+        <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.1.0/css/all.css} "/>
+        <style>
+            .red{
+                color: red;
+            }
+            .yelow{
+                color:#ffcc00;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h3>Lista de Productos</h3>
+            <hr>
+            <button class="btn btn-primary" style="margin-bottom: 20px; " data-toggle="modal" data-target="#modalGuardar" data-whatever="@mdo">Add</button>
+            <div class="row">
+                <div class="col">
+                    <table class="table" id="tablita">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">ID</th>
+                                <th scope="col">RODUCTO</th>
+                                <th scope="col">CLIENTE</th>
+                                <th scope="col">CANTIDAD</th>
+                                <th scope="col">COSTO UNITARIO </th>
+                                <th scope="col">IMPORTE </th>
+                                <th scope="col" colspan="2">ACCION</th>
+                            </tr>
+                        </thead>
+                        <tbody>                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Guardar DETALLE -->
+        <div class="modal fade" id="modalGuardar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Nuevo Detalle</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <select class="custom-select" id="idproducto">
+                                    <option selected>Producto</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <select class="custom-select" id="idcliente">
+                                    <option selected>Cliente</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Cantidad:</label>
+                                <input type="text" class="form-control" id="cantidad" placeholder="cantidad">
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Costo unitario:</label>
+                                <input type="text" class="form-control" id="costounitario" >
+                            </div>
+                            <div class="form-group">
+                                <label for="recipient-name" class="col-form-label">Importe:</label>
+                                <input type="text" class="form-control" id="importe" >
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="guardar">Registrar Detalle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Modificar detalle -->
+        <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Modificar Detalle</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <select class="custom-select" id="editar_idproducto">
+                                    <option selected>Producto</option>
+                                </select>
+                                <input type="hidden" class="form-control" id="iddetalle" value="0">
+                            </div>
+                            <div class="form-group">
+                                <select class="custom-select" id="editar_idcliente">
+                                    <option selected>Cliente</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Cantidad:</label>
+                                <input type="text" class="form-control" id="editar_cantidad" placeholder="Cantidad">
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Costo unitario:</label>
+                                <input type="text" class="form-control" id="editarunitario" >
+                            </div>
+                            <div class="form-group">
+                                <label for="message-text" class="col-form-label">Importe:</label>
+                                <input type="text" class="form-control" id="importe" >
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" id="modificar">Modificar detalle</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+        <script th:src="@{/js/detalle.js}"></script>
+    </body>
+</html>

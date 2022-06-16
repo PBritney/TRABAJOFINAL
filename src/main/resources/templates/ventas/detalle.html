@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/layout}">
+    <head th:replace="layout/layout :: head">
+        <title>Detalle </title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link th:rel="stylesheet" th:href="@{/webjars/bootstrap/4.6.1/css/bootstrap.min.css} "/>
+        <link th:rel="stylesheet" th:href="@{/webjars/font-awesome/6.1.0/css/all.css} "/>
+        <style>
+        body{
+            background: #d9a7c7;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #fffcdc, #d9a7c7);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #fffcdc, #d9a7c7); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+        }
+    </style>
+        
+    </head>
+    <body>
+        <div class="container-fluid" layout:fragment="page-content">
+        <div class="container"  id="fondo">
+            <div align="center"><h2>FORMULARIO DE DETALLE</h2></div>
+            <hr>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalGuardar" data-whatever="@mdo">Insertar</button>
+            <hr>
+            <table class="table" id="tablita">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">DNI</th>
+                        <th scope="col">CLIENTE</th>
+                        <th scope="col">CODIGO</th>
+                        <th scope="col">PRODUCTO</th>
+                        <th scope="col">PRECIO</th>
+                        
+                        <th scope="col" colspan="2">ACCION</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                     <tr>
+                    <th scope="row">1</th>
+                    <td>75643214</td>
+                    <td>Juan Carlos Gonzales</td>
+                    <td>C03</td>
+                    <td>Cafe Negro</td>
+                    <td>S/.4</td>
+                    <td>....</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>75643214</td>
+                    <td>Juan Carlos Gonzales</td>
+                    <td>C03</td>
+                    <td>Cafe Negro</td>
+                    <td>S/.4</td>
+                    <td>....</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>75643214</td>
+                    <td>Juan Carlos Gonzales</td>
+                    <td>C03</td>
+                    <td>Cafe Negro</td>
+                    <td>S/.4</td>
+                    <td>....</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>75643214</td>
+                    <td>Juan Carlos Gonzales</td>
+                    <td>C03</td>
+                    <td>Cafe Negro</td>
+                    <td>S/.4</td>
+                    <td>....</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>75643214</td>
+                    <td>Juan Carlos Gonzales</td>
+                    <td>C03</td>
+                    <td>Cafe Negro</td>
+                    <td>S/.4</td>
+                    <td>....</td>
+                </tr>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>75643214</td>
+                    <td>Juan Carlos Gonzales</td>
+                    <td>C03</td>
+                    <td>Cafe Negro</td>
+                    <td>S/.4</td>
+                    <td>....</td>
+                </tr>
+                </tbody>
+            </table>  
+            <button type="button" class="btn btn-danger" onclick="reti()" >SALIR</button>
+            <!-- Modal Guardar alumno-->
+            <div class="modal fade" id="modalGuardar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Nuevo Alumno</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Nombres:</label>
+                                    <input type="text" class="form-control" id="nombres" placeholder="Nombres">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">DNI: </label>
+                                    <input type="text" class="form-control" id="dni" placeholder="Dni">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Telefono: </label>
+                                    <input type="text" class="form-control" id="telefono" placeholder="Telefono">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Direccion: </label>
+                                    <input type="text" class="form-control" id="direccion" placeholder="Dirección">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="guardar">Registrar Alumno</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--Modal Modificar Post -->
+            <div class="modal fade" id="modalEditar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modificar Registro</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form>
+                                <div class="form-group">
+                                    <label for="recipient-name" class="col-form-label">Nombres:</label>
+                                    <input type="text" class="form-control" id="editar_nombres" placeholder="Nombres">
+                                    <input type="hidden" class="form-control" id="idalumno" value="0">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">DNI:</label>
+                                    <input type="text" class="form-control" id="editar_dni" placeholder="Dni">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Telefono:</label>
+                                    <input type="text" class="form-control" id="editar_telefono" placeholder="Dni">
+                                </div>
+                                <div class="form-group">
+                                    <label for="message-text" class="col-form-label">Direccion:</label>
+                                    <input type="text" class="form-control" id="editar_direccion" placeholder="Dni">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="modificar">Modificar Registro</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+<br><br><br><br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br><br><br><br><br>
+            
+            
+            <footer>
+        <p> &copy Derechos Reservados lima-Perú-2022</p>
+        <img src="img/twitter.png" alt="">
+        <img src="img/youtube.png" alt="">
+    </footer>
+
+        
+        <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+        <script th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
+        <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/5.5.2/bootbox.min.js"></script>
+        </div>
+        <th:block layout:fragment="page-scripts">
+           
+
+    </th:block>
+    </body>
+</html>
